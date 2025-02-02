@@ -2,45 +2,42 @@
 #include <string>
 #include <windows.h>
 
-
+ 
 struct Account
 {
 	std::string Name;
 	int Number;
 	float Summa;
-
 };
-static void change_summa( Account *a)
+
+Account change_summa(Account Client, float Summa)
 {
-	float Sum_new;
-	std::cout << "Ââåäèòå íîâûé áàëàíñ: ";
-	std::cin >> Sum_new;
-	a->Summa = Sum_new;
+	Client.Summa = Summa;
+	return Client;
 }
 
 int main()
 {
-
 	setlocale(LC_ALL, "rus");
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
-	std::string F_name;
-	int Num;
-	float Sum;
+	float Summa;
+	Account Client;
 
-	std::cout << "Ââåäèòå íîìåð ñ÷¸òà: ";
-	std::cin >> Num;
-	std::cout << "Ââåäèòå èìÿ âëàäåëüöà: ";
-	std::cin >> F_name;
-	std::cout << "Ââåäèòå áàëàíñ: ";
-	std::cin >> Sum;
-	Account Client = {.Name = F_name, .Number = Num, .Summa = Sum };
-	
-	change_summa(&Client);
-	
-	std::cout << "Âàø ñ÷¸ò: " << Client.Name << ", " << Client.Number << ", " << Client.Summa << " " << std::endl;
+	std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð¾Ð¼ÐµÑ€ ÑÑ‡Ñ‘Ñ‚Ð°: ";
+	std::cin >> Client.Number;
+	std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¸Ð¼Ñ Ð²Ð»Ð°Ð´ÐµÐ»ÑŒÑ†Ð°: ";
+	std::cin >> Client.Name;
+	std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð±Ð°Ð»Ð°Ð½Ñ: ";
+	std::cin >> Client.Summa;
+	std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð¾Ð²Ñ‹Ð¹ Ð±Ð°Ð»Ð°Ð½Ñ: ";
+	std::cin >> Summa;
 	std::cout << std::endl;
-
+	
+    Client = change_summa (Client, Summa);
+	
+	std::cout << "Ð’Ð°Ñˆ ÑÑ‡Ñ‘Ñ‚: " << Client.Name << ", " << Client.Number << ", " << Client.Summa << " " << std::endl;
+	
 	return EXIT_SUCCESS;
 }
